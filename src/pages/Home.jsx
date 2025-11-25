@@ -26,7 +26,7 @@ const Home = () => {
       fetch('/data/about.json').then(res => res.json())
     ])
       .then(([specialtiesData, doctorsData, reviewsData, settingsData, aboutDataFetched]) => {
-        setSpecialties(specialtiesData.slice(0, 6));
+        setSpecialties(specialtiesData);
         setDoctors(doctorsData);
         setReviews(reviewsData);
         setFeatures(settingsData.features || []);
@@ -218,7 +218,7 @@ const Home = () => {
           ) : (
             <div className="CARD">
             <div className="row g-4 ">
-              {specialties.map(specialty => {
+              {specialties.slice(0,6).map(specialty => {
                 const iconInfo = getSpecialtyIcon(specialty.icon);
                 const doctorCount = getDoctorCount(specialty.id);
 
